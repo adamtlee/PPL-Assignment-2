@@ -19,12 +19,13 @@ public class Node {
         this(token,value,"");
     }
     public Node (Token token, double value, String string){
+        children = new ArrayList<Node>();
         this.token = token;
         this.value = value;
         this.string = string;
     }
     @Override
     public String toString() {
-        return "[" + token + ": " + string + ", " + value + "]";
+        return "[" + token + ": " + string + ", " + value +  "," + children + "]";
     }
 }
