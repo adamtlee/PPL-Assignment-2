@@ -1,0 +1,2 @@
+input "enter angle: " angle
+msg "cos is " show cos(angle)

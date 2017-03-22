@@ -8,5 +8,6 @@ public class Variable extends Node {
         if (temp.token != this.token){
             throw new IllegalStateException("Expected a " + this.token + " but encountered: " + temp);
         }
+        this.string = temp.string;
     }
 }

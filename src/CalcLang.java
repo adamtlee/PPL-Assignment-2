@@ -19,9 +19,9 @@ public class CalcLang {
             variables = new ArrayList<String>();
             variable = new ArrayList<Double>();
             lex = new Lexer(name);
-            System.out.println(lex.tokens);
+           // System.out.println(lex.tokens);
             Node head = new Statements();
-            System.out.println(head);
+           // System.out.println(head);
             execute(head);
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -49,7 +49,7 @@ public class CalcLang {
     }
 
     public static double execute(Node node) throws Exception {
-        System.out.println(node + "; " + variables + ", " + variable);
+        //System.out.println( variables + ", " + variable);
         switch(node.token){
             case STATEMENTS:
                 execute(node.children.get(0));
@@ -69,11 +69,14 @@ public class CalcLang {
                         }
                         break;
                     case SHOW:
-                    case MSG:
                         System.out.print(execute(node.children.get(1)));
                         break;
+                    case MSG:
+                        System.out.print(node.children.get(1).string);
+                        break;
                     case INPUT:
-                        System.out.print(execute(node.children.get(1)));
+                        //execute(node.children.get(1))
+                        System.out.print(node.children.get(1).string);
                         Node var2 = node.children.get(2);
                         if (variables.contains(var2.string)){
                             variable.set(variables.indexOf(var2.string), Double.parseDouble(keyboard.nextLine()));
