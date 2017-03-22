@@ -1,0 +1,6 @@
+/**
+ * Created by adaml on 3/21/2017.
+ */
+public enum Token {
+    BIFN, NUMBER, VARIABLE, MINUS, LPAREN, RPAREN, MULTIPLY, DIVIDE, PLUS, EOF, STRING, EQUALS, SHOW, MSG, NEWLINE, INPUT
+}
