@@ -71,8 +71,10 @@ public class Lexer
         }
     }
     private Node readToken() throws IllegalStateException {
-        while (in.hasNextLine() || lineIndex < line.length()) {
-            char symbol = getSymbol();
+        char symbol = 26;
+        // in.hasNextLine() || lineIndex < line.length()
+        while ((symbol = getSymbol()) != 26) {
+            //char symbol = getSymbol();
             //System.out.println("(" + lineIndex + " <= " + line.length() + ") " + state + ": " + symbol);
             switch (state) {
                 case START:
@@ -130,6 +132,7 @@ public class Lexer
                             break;
                         default:
                             lineIndex--;
+                        case WHITESPACE:
                             state = State.START;
                             Node temp = new Node(Token.VARIABLE);
                             if (functions.contains(readChars.toLowerCase())) {
@@ -137,15 +140,23 @@ public class Lexer
                             } else {
                                 switch (readChars.toLowerCase()) {
                                     case "show":
+                                        readChars = "";
+                                        state = State.START;
                                         temp = new Node(Token.SHOW);
                                         break;
                                     case "input":
+                                        readChars = "";
+                                        state = State.START;
                                         temp = new Node(Token.INPUT);
                                         break;
                                     case "msg":
+                                        readChars = "";
+                                        state = State.START;
                                         temp = new Node(Token.MSG);
                                         break;
                                     case "newline":
+                                        readChars = "";
+                                        state = State.START;
                                         temp = new Node(Token.NEWLINE);
                                         break;
                                     default:
